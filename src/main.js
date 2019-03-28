@@ -55,24 +55,7 @@ Vue.directive('power', {
 
 // 全局导航钩子
 router.beforeEach((to, from, next) => {
-  // console.log('to=', to, '\nfrom=', from, '\nnext=', next)
-  // console.log('$cookies=', router.app.$cookies)
-  // console.log('app=', router.app)
-  // console.log('member=', store.state.member)
   if (to.meta.requireAuth) {
-    /* if (!router.app.$cookies.get('token')) {
-      next({
-        path: '/toLogin',
-        query: {redirect: to.fullPath} // 将跳转的路由path作为参数，登录成功后跳转到该路由
-      })
-    } else if (isEmptyObject(store.state.member)) {
-      next({
-        path: '/toLogin',
-        query: {redirect: to.fullPath} // 将跳转的路由path作为参数，登录成功后跳转到该路由
-      })
-    } else {
-      next()
-    } */
     if (router.app.$cookies.get('token')) {
       next({path: to.query.redirect})
     } else {
