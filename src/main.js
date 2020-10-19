@@ -77,10 +77,7 @@ router.beforeEach((to, from, next) => {
 })
 
 function isEmptyObject (obj) {
-  if (Object.keys(obj).length) {
-    return false
-  }
-  return true
+  return !Object.keys(obj).length
 }
 
 /* eslint-disable no-new */
